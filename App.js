@@ -1,42 +1,20 @@
-import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  Button,
-  Linking
-} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View, Text, Button, Linking} from 'react-native';
 
 const App = () => {
-  const [name, setName] = useState('Derrick');
-  const [session, setSession] = useState({number: 7, title: 'state'});
-  const [current, setCurrent] = useState(true);
-  
-  const handleName = () => {
-    setName('D.Strong')
-  }
+  const [count, setCount] = useState(0);
+  const [click, setClick] = useState(0);
 
-  const handleSession = () => {
-    setSession({number: 8, title: 'styles'})
-  }
-
-  const handleCurrent = () => {
-    setCurrent(!current)
-  }
+  const handleClick = () => {
+    setCount(count + 5);
+    setClick(click + 1);
+  };
 
   return (
     <View style={styles.body}>
-      <Text style={styles.text}>Hi, I'm {name}!</Text>
-      {/* <Button title='Learn More' onPress={()=>{Linking.openURL('http://www.derrickstrong.com')}}></Button> */}
-      <Button title="Update Name" onPress={handleName}></Button>
-      <Text style={styles.text}>
-        Session: {session.number} - About: {session.title}
-      </Text>
-      <Button title="Update Session" onPress={handleSession}></Button>
-      <Text style={styles.text}>
-        Status: {current ? 'Current Session' : 'Next Session'}
-      </Text>
-      <Button title="Update Current" onPress={handleCurrent}></Button>
+      <Text style={styles.text}>{count}</Text>
+      <Button title="Add" onPress={handleClick}></Button>
+      <Text style={styles.text}>You clicked {click} times</Text>
     </View>
   );
 };
